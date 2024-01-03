@@ -17,7 +17,7 @@ Pinterest produces billions of data points daily through user interaction. This 
 4. AWS MWAA for workflow orchestration
 5. AWS API Gateway for data ingestion
 
-## 2. Batch processing
+## 2. Batch processing usinf Kafka
 
 ### 2.1. Configuration of EC2 Kafka client
 
@@ -45,11 +45,25 @@ vi kafka_2.12-2.8.1/bin/client.properties
 * The Kafka topics were created using the following string in the EC2 environment, in the given format:
   * <user-id>.pin for Pinterest data
   * <user-id>.geo for Geolocation data
-  * <user-id>.user for User data
+  * <user-id>.user for Users data
  ```commandline
-./kafka-topics.sh --bootstrap-server <bootstrap-server> --command-config client.properties --create --topic <user-id>.pin
-./kafka-topics.sh --bootstrap-server <bootstrap-server> --command-config client.properties --create --topic <user-id>.geo
-./kafka-topics.sh --bootstrap-server <bootstrap-server> --command-config client.properties --create --topic <user-id>.user
+./kafka-topics.sh --bootstrap-server <BootstrapServerString> --command-config client.properties --create --topic <user-id>.pin
+./kafka-topics.sh --bootstrap-server <BootstrapServerString> --command-config client.properties --create --topic <user-id>.geo
+./kafka-topics.sh --bootstrap-server <BootstrapServerString> --command-config client.properties --create --topic <user-id>.user
 ```
 
-* 
+### 2.3. Connect the MSK cluster to S3 bucket
+
+### 2.4. Configure API using API Gateway
+
+### 2.5. Sparks on Databricks
+
+## 3. Stream processing using AWS Kinesis
+
+### 3.1. Configure an API with Kinesis proxy integration
+
+### 3.2. Send data to and read data from the Kinesis streams in Databricks
+
+### 3.3. Transform Kinesis streams in Databricks
+
+### 3.4. Write the streaming data to Delta Tables
