@@ -42,6 +42,14 @@ vi kafka_2.12-2.8.1/bin/client.properties
 * In order to create Kafka topics, the following information regarding the MSK clusters were extracted from AWS console:
   * Bootstrap servers string
   * Plaintext Apache Zookeeper connection string
-* The Kafka topics were created using the following string in the EC2 environment:
+* The Kafka topics were created using the following string in the EC2 environment, in the given format:
+  * <user-id>.pin for Pinterest data
+  * <user-id>.geo for Geolocation data
+  * <user-id>.user for User data
+ ```commandline
+./kafka-topics.sh --bootstrap-server <bootstrap-server> --command-config client.properties --create --topic <user-id>.pin
+./kafka-topics.sh --bootstrap-server <bootstrap-server> --command-config client.properties --create --topic <user-id>.geo
+./kafka-topics.sh --bootstrap-server <bootstrap-server> --command-config client.properties --create --topic <user-id>.user
+```
 
 * 
