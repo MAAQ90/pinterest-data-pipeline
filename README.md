@@ -108,9 +108,9 @@ from pyspark.sql.types import IntegerType, ArrayType, DoubleType
 from pyspark.sql.window import Window
 import urllib
 ```
-* Mounting of S3 bucket is required to read the pinterest, geolocation, and users data, into sparks dataframe, named as df_pin, df_geo, and df_user respectively.
+* Mounting of S3 bucket is required to read the pinterest, geolocation, and users data, into sparks dataframe, named as df_pin, df_geo, and df_user respectively.\
 Refer to code: https://github.com/MAAQ90/pinterest-data-pipeline2/blob/main/databricks_notebooks/s3-mount.ipynb
-* The data cleaning is then carried on all three data frames.
+* The data cleaning is then carried on all three data frames.\
 Refer to code: https://github.com/MAAQ90/pinterest-data-pipeline2/blob/main/databricks_notebooks/data_clean_and_queries.ipynb
 
 ## 3. Stream processing using AWS Kinesis
