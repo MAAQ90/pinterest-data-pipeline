@@ -54,6 +54,15 @@ vi kafka_2.12-2.8.1/bin/client.properties
 
 ### 2.3. Connect the MSK cluster to S3 bucket
 
+* Make note of your S3 bucket name <your-s3-bucket>.
+* Download Confluent.io Amazon S3 connector and copy it to <your-s3-bucket>, using the following: 
+ ```commandline
+- sudo -u ec2-user -i
+- mkdir kafka-connect-s3 && cd kafka-connect-s3
+- wget https://d1i4a15mxbxib1.cloudfront.net/api/plugins/confluentinc/kafka-connect-s3/versions/10.0.3/confluentinc-kafka-connect-s3-10.0.3.zip
+- aws s3 cp ./confluentinc-kafka-connect-s3-10.0.3.zip s3://<your-s3-bucket>/kafka-connect-s3/
+ ```
+
 ### 2.4. Configure API using API Gateway
 
 ### 2.5. Sparks on Databricks
