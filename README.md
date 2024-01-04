@@ -17,7 +17,7 @@ Pinterest produces billions of data points daily through user interaction. This 
 4. AWS MWAA for workflow orchestration
 5. AWS API Gateway for data ingestion
 
-## 2. Batch processing usinf Kafka
+## 2. Batch processing using Kafka
 
 ### 2.1. Configuration of EC2 Kafka client
 
@@ -65,7 +65,7 @@ vi kafka_2.12-2.8.1/bin/client.properties
 * Using the AWS console (MSK Connect), create the custom plug-in as: <user-id>-plugin
 * Then create a connector in MSK Connect: <user-id>-connector, and make sure that you use correct S3 bucket during configuration (user-<user-id>-bucket).
 
-### 2.4. Configure API using API Gateway
+### 2.4. Configure API using API Gateway {#configure-api}
 
 In this step, Kafka REST proxy integration method for the API was configured:
 
@@ -87,7 +87,7 @@ client.security.protocol = SASL_SSL
 client.sasl.mechanism = AWS_MSK_IAM
 
 # Binds SASL client implementation.
-client.sasl.jaas.config = software.amazon.msk.auth.iam.IAMLoginModule required awsRoleArn="arn:aws:iam::584739742957:role/0e36c8cd403d-ec2-access-role";
+client.sasl.jaas.config = software.amazon.msk.auth.iam.IAMLoginModule required awsRoleArn=<your-aws-RoleArn>;
 
 # Encapsulates constructing a SigV4 signature based on extracted credentials.
 # The SASL client bound by "sasl.jaas.config" invokes this class.
@@ -115,7 +115,14 @@ Refer to code: https://github.com/MAAQ90/pinterest-data-pipeline2/blob/main/data
 
 ## 3. Stream processing using AWS Kinesis
 
+Create 3 data streams using 'Kinesis Data Streams', in the following format:
+* streaming-<user-id>-pin for pinterest data stream
+* streaming-<user-id>-geo for geolocation data stream
+* streaming-<user-id>-user for users data stream
+
 ### 3.1. Configure an API with Kinesis proxy integration
+
+Further actions need to be carried out on previously created REST API ([Section 2.4](#configure-api)) using AWS API Gateway.
 
 ### 3.2. Send data to and read data from the Kinesis streams in Databricks
 
