@@ -65,7 +65,7 @@ vi kafka_2.12-2.8.1/bin/client.properties
 * Using the AWS console (MSK Connect), create the custom plug-in as: <user-id>-plugin
 * Then create a connector in MSK Connect: <user-id>-connector, and make sure that you use correct S3 bucket during configuration (user-<user-id>-bucket).
 
-### 2.4. [Configure API using API Gateway](#configure-api)
+### 2.4. Configure API using API Gateway
 
 In this step, Kafka REST proxy integration method for the API was configured:
 
@@ -115,14 +115,17 @@ Refer to code: https://github.com/MAAQ90/pinterest-data-pipeline2/blob/main/data
 
 ## 3. Stream processing using AWS Kinesis
 
-Create 3 data streams using 'Kinesis Data Streams', in the following format:
+Create 3 data streams using 'Kinesis Data Streams', in the following format, with capacity mode set to 'On-demand':
 * streaming-<user-id>-pin for pinterest data stream
 * streaming-<user-id>-geo for geolocation data stream
 * streaming-<user-id>-user for users data stream
 
 ### 3.1. Configure an API with Kinesis proxy integration
 
-Further actions need to be carried out on previously created REST API ([Section 2.4](#configure-api)) using AWS API Gateway.
+Further actions need to be carried out on previously created REST API using AWS API Gateway. Retrieve the ARN of access role (to Kinesis) and use this when setting up the Execution role for the integration point of all the methods being created. The API invokes the following actions:
+* List streams in Kinesis
+* Create, describe, and delete streams in Kinesis
+* Add records to streams in Kinesis
 
 ### 3.2. Send data to and read data from the Kinesis streams in Databricks
 
