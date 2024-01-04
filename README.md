@@ -102,7 +102,7 @@ client.sasl.client.callback.handler.class = software.amazon.msk.auth.iam.IAMClie
 
 In this step, Databricks account is setup, the S3 bucket 'user-<user-id>-bucket' is mounted, data is cleaned, and queries are made.
 * The required libraries for sparks data processing are imported using the following code:
-```commandline
+```python
 from pyspark.sql.functions import *
 from pyspark.sql.types import IntegerType, ArrayType, DoubleType
 from pyspark.sql.window import Window
