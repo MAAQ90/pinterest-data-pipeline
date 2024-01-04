@@ -129,6 +129,12 @@ Further actions need to be carried out on previously created REST API using AWS 
 
 ### 3.2. Send data to and read data from the Kinesis streams in Databricks
 
+* A python is created to send data in to the Kinesis streams.
+Refer to code: https://github.com/MAAQ90/pinterest-data-pipeline2/blob/main/python_data/user_posting_emulation_stream.py
+* The code that uses PySparks capabilites is written to ingest data into Kinesis Data Streams:
+Refer to code: 
+
+
 ### 3.3. Transform Kinesis streams in Databricks
 
 ### 3.4. Write the streaming data to Delta Tables
