@@ -8,13 +8,17 @@
 
 ## 1. About
 
-Pinterest produces billions of data points daily through user interaction. This project aimed to build a cloud-based end-to-end data processing pipelines using Pinterest's data generation emulator. The system was capable of handling both batch and streams of data. The following tools were utlised in order to do so:
+Pinterest produces billions of data points daily through user interaction. This project aimed to build a cloud-based end-to-end data processing pipelines using Pinterest's data generation emulator. The system was capable of handling both batch and streams of data. The following tools were utilised in building the system:
 
-1. AWS S3 for data storage
-2. AWS MSK for stream processing
-3. Databricks (Python environment) for data transformation
-4. AWS MWAA for workflow orchestration
-5. AWS API Gateway for data ingestion
+1. Python scripts for emulation of Pinterest data
+2. Databricks to utilise capabilities of (Python-based) Apache Sparks for transformation of both batch and streaming data
+3. AWS S3 for data storage
+4. AWS EC2 for linux environment
+5. AWS MSK clusters for data processing
+6. Kafka for batch data production
+7. AWS Kinesis for stream data production
+8. AWS MWAA for workflow orchestration
+9. AWS API Gateway to create APIs for data ingestion
 
 ![Data pipeline architecture](./CloudPinterestPipeline.jpeg)
 
