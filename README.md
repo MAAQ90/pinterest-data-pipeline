@@ -146,11 +146,17 @@ df_output_cleaned.writeStream \
 
 ## 4. File Structure
 
-* Folder: \databricks-notebooks
-  * File: \aws-s3-mount.ipynb:\
-    This code mounts the AWS S3 bucket in databricks notebook.
-  * File: \batch-data_kafka_read-transform-query.ipynb:\
-    This code reads the Kafka batch data stored in S3 bucket, performs cleaning operations, followed by SQL-styled queries using Sparks.
-  * File \stream-data_kinesis_read-transform-write.ipynb\
-    This codes reads Kinesis streaming data, performs cleaning operations, and writes the cleaned data to Delta table.
-* Folder
+* Folder: **\databricks-notebooks**
+  * File: **aws-s3-mount.ipynb**:\
+    Python notebook code that mounts the AWS S3 bucket in databricks notebook.
+  * File: **batch-data_kafka_read-transform-query.ipynb**:\
+    Python notebook code that reads the Kafka batch data stored in S3 bucket, performs cleaning operations, followed by SQL-styled queries using Sparks.
+  * File: **stream-data_kinesis_read-transform-write.ipynb**\
+    Python notebook code that reads Kinesis streaming data, performs cleaning operations, and writes the cleaned data to Delta table.
+* Folder: **\python_data**
+  * File: **piplibinstall.py**:\
+    This file installs all the required libraries to run the data pipeline system established in this work.
+  * File: **user_posting_emulation_batch.py**:\
+    Python code for emulation of the Pinterest data in batch using Kafka
+  * File: **user_posting_emulation_stream.py**:\
+    Python code for emulation of the Pinterest data in real-time (streams)
