@@ -65,7 +65,7 @@ vi kafka_2.12-2.8.1/bin/client.properties
 * Using the AWS console (MSK Connect), create the custom plug-in as: <user-id>-plugin
 * Then create a connector in MSK Connect: <user-id>-connector, and make sure that you use correct S3 bucket during configuration (user-<user-id>-bucket).
 
-### 2.4. Configure API using API Gateway {#configure-api}
+### 2.4. [Configure API using API Gateway](#configure-api)
 
 In this step, Kafka REST proxy integration method for the API was configured:
 
