@@ -127,14 +127,20 @@ Further actions need to be carried out on previously created REST API using AWS 
 * Create, describe, and delete streams in Kinesis
 * Add records to streams in Kinesis
 
-### 3.2. Send data to and read data from the Kinesis streams in Databricks
+### 3.2. Ingest and transform the Kinesis streams
 
-* A python is created to send data in to the Kinesis streams.
+* A python is created to send data in to the Kinesis streams.\
 Refer to code: https://github.com/MAAQ90/pinterest-data-pipeline2/blob/main/python_data/user_posting_emulation_stream.py
-* The code that uses PySparks capabilites is written to ingest data into Kinesis Data Streams:
-Refer to code: 
+* The code that uses PySparks capabilites is written to ingest data into Kinesis Data Streams, transforms Kinesis streams, and writes the streaming data into Delta Tables.\
+Refer to code: https://github.com/MAAQ90/pinterest-data-pipeline2/blob/main/databricks_notebooks/stream-data_kinesis_read-transform-write.ipynb
 
+### 3.3. Write the streaming data to Delta Tables
 
-### 3.3. Transform Kinesis streams in Databricks
-
-### 3.4. Write the streaming data to Delta Tables
+* Important consideration while writing the data into Delta Tables: Seperate the configuration for each streaming DataFrame and write each one independently. So, after _checkpoints add a seperate folder for each stream.
+```python
+df_output_cleaned.writeStream \
+  .format("delta") \
+  .outputMode("append") \
+  .option("checkpointLocation", "/tmp/kinesis/_checkpoints/<stream-1>") \
+  .table("USER-ID_pin_table")
+```
