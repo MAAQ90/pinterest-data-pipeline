@@ -110,9 +110,9 @@ from pyspark.sql.window import Window
 import urllib
 ```
 * Mounting of S3 bucket is required to read the pinterest, geolocation, and users data, into sparks dataframe, named as df_pin, df_geo, and df_user respectively.\
-Refer to code: https://github.com/MAAQ90/pinterest-data-pipeline2/blob/main/databricks_notebooks/s3-mount.ipynb
+Refer to code: https://github.com/MAAQ90/pinterest-data-pipeline/blob/main/databricks_notebooks/s3-mount.ipynb
 * The data cleaning is then carried on all three data frames.\
-Refer to code: https://github.com/MAAQ90/pinterest-data-pipeline2/blob/main/databricks_notebooks/data_clean_and_queries.ipynb
+Refer to code: https://github.com/MAAQ90/pinterest-data-pipeline/blob/main/databricks_notebooks/data_clean_and_queries.ipynb
 
 ## 3. Stream processing using AWS Kinesis
 
@@ -131,9 +131,9 @@ Further actions need to be carried out on previously created REST API using AWS 
 ### 3.2. Ingest and transform the Kinesis streams
 
 * A python is created to send data in to the Kinesis streams.\
-Refer to code: https://github.com/MAAQ90/pinterest-data-pipeline2/blob/main/python_data/user_posting_emulation_stream.py
+Refer to code: https://github.com/MAAQ90/pinterest-data-pipeline/blob/main/python_data/user_posting_emulation_stream.py
 * The code that uses PySparks capabilites is written to ingest data into Kinesis Data Streams, transforms Kinesis streams, and writes the streaming data into Delta Tables.\
-Refer to code: https://github.com/MAAQ90/pinterest-data-pipeline2/blob/main/databricks_notebooks/stream-data_kinesis_read-transform-write.ipynb
+Refer to code: https://github.com/MAAQ90/pinterest-data-pipeline/blob/main/databricks_notebooks/stream-data_kinesis_read-transform-write.ipynb
 
 ### 3.3. Write the streaming data to Delta Tables
 
