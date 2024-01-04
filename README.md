@@ -93,8 +93,18 @@ client.sasl.jaas.config = software.amazon.msk.auth.iam.IAMLoginModule required a
 # The SASL client bound by "sasl.jaas.config" invokes this class.
 client.sasl.client.callback.handler.class = software.amazon.msk.auth.iam.IAMClientCallbackHandler 
 ```
-* 
+* Start the REST proxy on the EC2 client machine:
+```commandline
+./confluent-7.2.0/bin/kafka-rest-start /home/ec2-user/confluent-7.2.0/etc/kafka-rest/kafka-rest.properties
+```
+
 ### 2.5. Sparks on Databricks
+
+In this step, Databricks account is setup, the S3 bucket 'user-<user-id>-bucket' is mounted, data is cleaned, and queries are made.
+
+* Mounting of S3 bucket is required to read the pinterest, geolocation, and users data.
+Refer to code: https://github.com/MAAQ90/pinterest-data-pipeline2/blob/main/databricks_notebooks/s3-mount.ipynb
+* avc
 
 ## 3. Stream processing using AWS Kinesis
 
