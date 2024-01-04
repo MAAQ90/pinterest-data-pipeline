@@ -5,7 +5,6 @@
 2. Batch processing
 3. Stream processing
 4. File structure
-5. License information
 
 ## 1. About
 
@@ -144,3 +143,14 @@ df_output_cleaned.writeStream \
   .option("checkpointLocation", "/tmp/kinesis/_checkpoints/<stream-1>") \
   .table("USER-ID_pin_table")
 ```
+
+## 4. File Structure
+
+* Folder: \databricks-notebooks
+  * File: \aws-s3-mount.ipynb:\
+    This code mounts the AWS S3 bucket in databricks notebook.
+  * File: \batch-data_kafka_read-transform-query.ipynb:\
+    This code reads the Kafka batch data stored in S3 bucket, performs cleaning operations, followed by SQL-styled queries using Sparks.
+  * File \stream-data_kinesis_read-transform-write.ipynb\
+    This codes reads Kinesis streaming data, performs cleaning operations, and writes the cleaned data to Delta table.
+* Folder
