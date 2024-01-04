@@ -54,17 +54,46 @@ vi kafka_2.12-2.8.1/bin/client.properties
 
 ### 2.3. Connect the MSK cluster to S3 bucket
 
-* Make note of your S3 bucket name <your-s3-bucket>.
+* Make note of your S3 bucket name: user-<user-id>-bucket.
 * Download Confluent.io Amazon S3 connector and copy it to <your-s3-bucket>, using the following: 
- ```commandline
+```commandline
 - sudo -u ec2-user -i
 - mkdir kafka-connect-s3 && cd kafka-connect-s3
 - wget https://d1i4a15mxbxib1.cloudfront.net/api/plugins/confluentinc/kafka-connect-s3/versions/10.0.3/confluentinc-kafka-connect-s3-10.0.3.zip
 - aws s3 cp ./confluentinc-kafka-connect-s3-10.0.3.zip s3://<your-s3-bucket>/kafka-connect-s3/
  ```
+* Using the AWS console (MSK Connect), create the custom plug-in as: <user-id>-plugin
+* Then create a connector in MSK Connect: <user-id>-connector, and make sure that you use correct S3 bucket during configuration (user-<user-id>-bucket).
 
 ### 2.4. Configure API using API Gateway
 
+In this step, Kafka REST proxy integration method for the API was configured:
+
+* Navigate to API Gateway on you AWS console and create a resource for PROXY integration.
+* Create an HTTP 'ANY' method, and copy 'PublicDNS' of your EC2 machines to 'Endpoint URL'.
+* Deploy the API and note the 'Invoke URL'.
+* Install the Confluent package using the following commands on your EC2 client:
+```commandline
+cd /home/ec2-user/
+sudo wget https://packages.confluent.io/archive/7.2/confluent-7.2.0.tar.gz
+tar -xvzf confluent-7.2.0.tar.gz 
+```
+* Modify the 'kafka-rest.properties' file to allow the REST proxy to perform IAM authentication, by adding the following properties:
+```commandline
+# Sets up TLS for encryption and SASL for authN.
+client.security.protocol = SASL_SSL
+
+# Identifies the SASL mechanism to use.
+client.sasl.mechanism = AWS_MSK_IAM
+
+# Binds SASL client implementation.
+client.sasl.jaas.config = software.amazon.msk.auth.iam.IAMLoginModule required awsRoleArn="arn:aws:iam::584739742957:role/0e36c8cd403d-ec2-access-role";
+
+# Encapsulates constructing a SigV4 signature based on extracted credentials.
+# The SASL client bound by "sasl.jaas.config" invokes this class.
+client.sasl.client.callback.handler.class = software.amazon.msk.auth.iam.IAMClientCallbackHandler 
+```
+* 
 ### 2.5. Sparks on Databricks
 
 ## 3. Stream processing using AWS Kinesis
