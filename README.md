@@ -16,6 +16,8 @@ Pinterest produces billions of data points daily through user interaction. This 
 4. AWS MWAA for workflow orchestration
 5. AWS API Gateway for data ingestion
 
+![Data pipeline architecture](./CloudPinterestPipeline.jpg)
+
 ## 2. Batch processing using Kafka
 
 ### 2.1. Configuration of EC2 Kafka client
