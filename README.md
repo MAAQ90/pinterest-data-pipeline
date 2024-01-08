@@ -14,7 +14,7 @@ Pinterest produces billions of data points daily through user interaction. This 
 2. Databricks to utilise capabilities of (Python-based) Apache Sparks for transformation of both batch and streaming data
 3. AWS S3 for data storage
 4. AWS EC2 for linux environment
-5. AWS MSK clusters for data processing
+5. AWS MSK clusters for Kafka data processing
 6. Kafka for batch data production
 7. AWS Kinesis for stream data production
 8. AWS MWAA for workflow orchestration
